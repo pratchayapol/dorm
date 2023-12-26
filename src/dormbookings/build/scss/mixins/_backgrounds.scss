@@ -3,6 +3,7 @@
 //
 
 // Background Variant
+$color=#ffffff;
 @mixin background-variant($name, $color) {
   .bg-#{$name} {
     background-color: #{$color} !important;
