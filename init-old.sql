@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql
--- Generation Time: Dec 26, 2023 at 04:36 AM
--- Server version: 8.2.0
--- PHP Version: 8.2.8
+-- Host: 127.0.0.1
+-- Generation Time: Dec 25, 2023 at 07:52 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account_list` (
-  `id` int NOT NULL,
-  `code` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `student_id` int NOT NULL,
-  `room_id` int NOT NULL,
-  `rate` float(12,2) NOT NULL DEFAULT '0.00',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `delete_flag` tinyint(1) NOT NULL DEFAULT '0',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(30) NOT NULL,
+  `code` varchar(100) NOT NULL,
+  `student_id` int(30) NOT NULL,
+  `room_id` int(30) NOT NULL,
+  `rate` float(12,2) NOT NULL DEFAULT 0.00,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete_flag` tinyint(1) NOT NULL DEFAULT 0,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -54,12 +54,12 @@ INSERT INTO `account_list` (`id`, `code`, `student_id`, `room_id`, `rate`, `stat
 --
 
 CREATE TABLE `dorm_list` (
-  `id` int NOT NULL,
-  `name` text COLLATE utf8mb4_general_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `delete_flag` tinyint(1) NOT NULL DEFAULT '0',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(30) NOT NULL,
+  `name` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete_flag` tinyint(1) NOT NULL DEFAULT 0,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -79,12 +79,12 @@ INSERT INTO `dorm_list` (`id`, `name`, `status`, `delete_flag`, `date_created`, 
 --
 
 CREATE TABLE `payment_list` (
-  `id` int NOT NULL,
-  `account_id` int NOT NULL,
-  `month_of` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `amount` float(12,2) NOT NULL DEFAULT '0.00',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(30) NOT NULL,
+  `account_id` int(30) NOT NULL,
+  `month_of` varchar(10) NOT NULL,
+  `amount` float(12,2) NOT NULL DEFAULT 0.00,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -94,15 +94,15 @@ CREATE TABLE `payment_list` (
 --
 
 CREATE TABLE `room_list` (
-  `id` int NOT NULL,
-  `dorm_id` int NOT NULL,
-  `name` text COLLATE utf8mb4_general_ci NOT NULL,
-  `slots` int NOT NULL DEFAULT '0',
-  `price` float(12,2) NOT NULL DEFAULT '0.00',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `delete_flag` tinyint(1) NOT NULL DEFAULT '0',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(30) NOT NULL,
+  `dorm_id` int(30) NOT NULL,
+  `name` text NOT NULL,
+  `slots` int(10) NOT NULL DEFAULT 0,
+  `price` float(12,2) NOT NULL DEFAULT 0.00,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete_flag` tinyint(1) NOT NULL DEFAULT 0,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -694,25 +694,25 @@ INSERT INTO `room_list` (`id`, `dorm_id`, `name`, `slots`, `price`, `status`, `d
 --
 
 CREATE TABLE `student_list` (
-  `id` int NOT NULL,
-  `code` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `firstname` text COLLATE utf8mb4_general_ci NOT NULL,
-  `middlename` text COLLATE utf8mb4_general_ci,
-  `lastname` text COLLATE utf8mb4_general_ci NOT NULL,
-  `department` text COLLATE utf8mb4_general_ci NOT NULL,
-  `course` text COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `contact` text COLLATE utf8mb4_general_ci NOT NULL,
-  `email` text COLLATE utf8mb4_general_ci NOT NULL,
-  `address` text COLLATE utf8mb4_general_ci NOT NULL,
-  `emergency_name` text COLLATE utf8mb4_general_ci NOT NULL,
-  `emergency_contact` text COLLATE utf8mb4_general_ci NOT NULL,
-  `emergency_address` text COLLATE utf8mb4_general_ci NOT NULL,
-  `emergency_relation` text COLLATE utf8mb4_general_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `delete_flag` tinyint(1) NOT NULL DEFAULT '0',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(30) NOT NULL,
+  `code` varchar(100) NOT NULL,
+  `firstname` text NOT NULL,
+  `middlename` text DEFAULT NULL,
+  `lastname` text NOT NULL,
+  `department` text NOT NULL,
+  `course` text NOT NULL,
+  `gender` varchar(20) NOT NULL,
+  `contact` text NOT NULL,
+  `email` text NOT NULL,
+  `address` text NOT NULL,
+  `emergency_name` text NOT NULL,
+  `emergency_contact` text NOT NULL,
+  `emergency_address` text NOT NULL,
+  `emergency_relation` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `delete_flag` tinyint(1) NOT NULL DEFAULT 0,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -731,9 +731,9 @@ INSERT INTO `student_list` (`id`, `code`, `firstname`, `middlename`, `lastname`,
 --
 
 CREATE TABLE `system_info` (
-  `id` int NOT NULL,
-  `meta_field` text COLLATE utf8mb4_general_ci NOT NULL,
-  `meta_value` text COLLATE utf8mb4_general_ci NOT NULL
+  `id` int(30) NOT NULL,
+  `meta_field` text NOT NULL,
+  `meta_value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -754,17 +754,17 @@ INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL,
-  `firstname` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
-  `middlename` text COLLATE utf8mb4_general_ci,
-  `lastname` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
-  `username` text COLLATE utf8mb4_general_ci NOT NULL,
-  `password` text COLLATE utf8mb4_general_ci NOT NULL,
-  `avatar` text COLLATE utf8mb4_general_ci,
+  `id` int(50) NOT NULL,
+  `firstname` varchar(250) NOT NULL,
+  `middlename` text DEFAULT NULL,
+  `lastname` varchar(250) NOT NULL,
+  `username` text NOT NULL,
+  `password` text NOT NULL,
+  `avatar` text DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_updated` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `type` tinyint(1) NOT NULL DEFAULT 0,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -772,8 +772,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `middlename`, `lastname`, `username`, `password`, `avatar`, `last_login`, `type`, `date_added`, `date_updated`) VALUES
-(1, 'Adminstrator', '', 'Admin', 'admin', 'afdd0b4ad2ec172c586e2150770fbf9e', 'uploads/avatars/1.png?v=1649834664', NULL, 1, '2021-01-20 14:02:37', '2023-12-26 04:35:12'),
-(6, 'อนุชิต', 'เทส', 'อาจหาญ', 'king', 'afdd0b4ad2ec172c586e2150770fbf9e', NULL, NULL, 2, '2023-08-24 14:07:35', '2023-12-26 04:35:10');
+(1, 'Adminstrator', '', 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 'uploads/avatars/1.png?v=1649834664', NULL, 1, '2021-01-20 14:02:37', '2023-08-24 08:51:38'),
+(6, 'อนุชิต', 'เทส', 'อาจหาญ', 'king', '3f48e34296343a0f2d2f09f896f1893a', NULL, NULL, 2, '2023-08-24 14:07:35', '2023-10-18 14:18:35');
 
 --
 -- Indexes for dumped tables
@@ -833,43 +833,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `account_list`
 --
 ALTER TABLE `account_list`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `dorm_list`
 --
 ALTER TABLE `dorm_list`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payment_list`
 --
 ALTER TABLE `payment_list`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `room_list`
 --
 ALTER TABLE `room_list`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=610;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=610;
 
 --
 -- AUTO_INCREMENT for table `student_list`
 --
 ALTER TABLE `student_list`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `system_info`
 --
 ALTER TABLE `system_info`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -879,20 +879,20 @@ ALTER TABLE `users`
 -- Constraints for table `account_list`
 --
 ALTER TABLE `account_list`
-  ADD CONSTRAINT `room_id_fk_al` FOREIGN KEY (`room_id`) REFERENCES `room_list` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `student_id_fk_al` FOREIGN KEY (`student_id`) REFERENCES `student_list` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `room_id_fk_al` FOREIGN KEY (`room_id`) REFERENCES `room_list` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `student_id_fk_al` FOREIGN KEY (`student_id`) REFERENCES `student_list` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `payment_list`
 --
 ALTER TABLE `payment_list`
-  ADD CONSTRAINT `account_id_fk_pl` FOREIGN KEY (`account_id`) REFERENCES `account_list` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `account_id_fk_pl` FOREIGN KEY (`account_id`) REFERENCES `account_list` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `room_list`
 --
 ALTER TABLE `room_list`
-  ADD CONSTRAINT `drom_id_fk_rl` FOREIGN KEY (`dorm_id`) REFERENCES `dorm_list` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `drom_id_fk_rl` FOREIGN KEY (`dorm_id`) REFERENCES `dorm_list` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
