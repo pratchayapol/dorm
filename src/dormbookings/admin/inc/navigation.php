@@ -34,7 +34,7 @@
                       <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                          Dashboardsss
+                          Dashboard
                         </p>
                       </a>
                     </li> 
