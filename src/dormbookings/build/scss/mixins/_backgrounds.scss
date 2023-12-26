@@ -33,7 +33,7 @@
 // Background Gradient Variant
 @mixin background-gradient-variant($name, $color) {
   .bg-gradient-#{$name} {
-    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x !important;
+    background: $color linear-gradient(180deg, mix($body-bg, '#077eab', 15%), $color) repeat-x !important;
     color: color-yiq($color);
 
     &.btn {
