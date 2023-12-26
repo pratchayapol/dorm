@@ -46,7 +46,7 @@
       }
 
       &:hover {
-        background: $color linear-gradient(180deg, mix($body-bg, darken($color, 7.5%), 15%), darken($color, 7.5%)) repeat-x !important;
+        background: $color linear-gradient(180deg, mix($body-bg, darken($color, 7.5%), 15%), darken($color, 7.5%)) repeat-x !important; 
         border-color: darken($color, 10%);
         color: darken(color-yiq($color), 7.5%);
       }
