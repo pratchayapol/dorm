@@ -60,7 +60,7 @@
                       <a href="<?php echo base_url ?>admin/?page=reports/daily_collection_report" class="nav-link nav-reports_daily_collection_report">
                         <i class="nav-icon far fa-circle"></i>
                         <p>
-                          ระบบรายงาน sssssss
+                          ระบบรายงาน
                         </p>
                       </a>
                     </li>
