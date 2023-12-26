@@ -11,7 +11,7 @@
         <!-- Brand Logo -->
         <a href="<?php echo base_url ?>admin" class="brand-link bg-gradient-maroon text-sm text-light">
         <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3" style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
-        <span class="brand-text font-weight-light"><?php echo $_dsettings->info('short_name') ?></span>
+        <span class="brand-text font-weight-light"><?php echo $_settings->info('short_name') ?></span>
         </a>
         <!-- Sidebar -->
         <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
@@ -34,7 +34,7 @@
                       <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                          Dashboard
+                          Dashboardsss
                         </p>
                       </a>
                     </li> 
